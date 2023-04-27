@@ -44,13 +44,20 @@
   margin: 40px 20px 20px 22px;
   border-radius: 5px;
   border: 3px solid #00ffe5;
-  width: 700px;
-  height: 280px;
+  width: 680px;
+  height: 250px;
+  padding: 10px;
 }
 
 .key {
   display: inline-block;
-  width: 25px;
-  height: 25px;
+  width: 35px;
+  height: 35px;
+  margin-left: 10px;
   border: 1px solid #00ffe5;
+  cursor: pointer;
+}
+
+.hide {
+  display: none;
 }
