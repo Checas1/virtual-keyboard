@@ -115,84 +115,89 @@ const keysArray = [
   ],
   [
     {
-      ru: { default: "ё", shift: "Ё", caps: "Ё", shiftCaps: "ё" },
-      eng: { default: "`", shift: "~", caps: "`", shiftCaps: "`" },
-      code: "Backquote",
+      ru: { default: "Tab", shift: "Tab", caps: "Tab", shiftCaps: "Tab" },
+      eng: { default: "Tab", shift: "Tab", caps: "Tab", shiftCaps: "Tab" },
+      code: "Tab",
     },
     {
-      ru: { default: "1", shift: "!", caps: "1", shiftCaps: "!" },
-      eng: { default: "1", shift: "!", caps: "1", shiftCaps: "!" },
-      code: "Digit1",
+      ru: { default: "й", shift: "Й", caps: "Й", shiftCaps: "й" },
+      eng: { default: "q", shift: "Q", caps: "Q", shiftCaps: "q" },
+      code: "KeyQ",
     },
     {
-      ru: { default: "2", shift: `"`, caps: "2", shiftCaps: `"` },
-      eng: { default: "2", shift: "@", caps: "2", shiftCaps: "@" },
-      code: "Digit2",
+      ru: { default: "ц", shift: `Ц`, caps: "Ц", shiftCaps: `ц` },
+      eng: { default: "w", shift: "W", caps: "W", shiftCaps: "w" },
+      code: "KeyW",
     },
     {
-      ru: { default: "3", shift: `№`, caps: "3", shiftCaps: `№` },
-      eng: { default: "3", shift: "#", caps: "3", shiftCaps: "#" },
-      code: "Digit3",
+      ru: { default: "у", shift: `У`, caps: "У", shiftCaps: `у` },
+      eng: { default: "e", shift: "E", caps: "E", shiftCaps: "e" },
+      code: "KeyE",
     },
     {
-      ru: { default: "4", shift: `%`, caps: "4", shiftCaps: `%` },
-      eng: { default: "4", shift: "$", caps: "4", shiftCaps: "$" },
-      code: "Digit4",
+      ru: { default: "к", shift: `К`, caps: "К", shiftCaps: `к` },
+      eng: { default: "r", shift: "R", caps: "R", shiftCaps: "r" },
+      code: "KeyR",
     },
     {
-      ru: { default: "5", shift: `:`, caps: "5", shiftCaps: `:` },
-      eng: { default: "5", shift: "%", caps: "5", shiftCaps: "%" },
-      code: "Digit5",
+      ru: { default: "е", shift: `Е`, caps: "Е", shiftCaps: `е` },
+      eng: { default: "t", shift: "T", caps: "T", shiftCaps: "t" },
+      code: "KeyT",
     },
     {
-      ru: { default: "6", shift: `,`, caps: "6", shiftCaps: `,` },
-      eng: { default: "6", shift: "^", caps: "6", shiftCaps: "^" },
-      code: "Digit6",
+      ru: { default: "н", shift: `Н`, caps: "Н", shiftCaps: `н` },
+      eng: { default: "y", shift: "Y", caps: "Y", shiftCaps: "y" },
+      code: "KeyY",
     },
     {
-      ru: { default: "7", shift: `.`, caps: "7", shiftCaps: `.` },
-      eng: { default: "7", shift: "&", caps: "7", shiftCaps: "&" },
-      code: "Digit7",
+      ru: { default: "г", shift: `Г`, caps: "Г", shiftCaps: `г` },
+      eng: { default: "u", shift: "U", caps: "U", shiftCaps: "u" },
+      code: "KeyU",
     },
     {
-      ru: { default: "8", shift: `;`, caps: "8", shiftCaps: `;` },
-      eng: { default: "8", shift: "*", caps: "8", shiftCaps: "*" },
-      code: "Digit8",
+      ru: { default: "ш", shift: `Ш`, caps: "Ш", shiftCaps: `ш` },
+      eng: { default: "i", shift: "I", caps: "I", shiftCaps: "i" },
+      code: "KeyI",
     },
     {
-      ru: { default: "9", shift: `(`, caps: "9", shiftCaps: `(` },
-      eng: { default: "9", shift: "(", caps: "9", shiftCaps: "(" },
-      code: "Digit9",
+      ru: { default: "щ", shift: `Щ`, caps: "Щ", shiftCaps: `щ` },
+      eng: { default: "o", shift: "O", caps: "O", shiftCaps: "o" },
+      code: "KeyO",
     },
     {
-      ru: { default: "0", shift: `)`, caps: "0", shiftCaps: `)` },
-      eng: { default: "0", shift: ")", caps: "0", shiftCaps: ")" },
-      code: "Digit0",
+      ru: { default: "з", shift: `З`, caps: "З", shiftCaps: `з` },
+      eng: { default: "p", shift: "P", caps: "P", shiftCaps: "p" },
+      code: "KeyP",
     },
     {
-      ru: { default: "-", shift: `_`, caps: "-", shiftCaps: `_` },
-      eng: { default: "-", shift: "_", caps: "-", shiftCaps: "_" },
-      code: "Minus",
+      ru: { default: "х", shift: `Х`, caps: "Х", shiftCaps: `х` },
+      eng: { default: "[", shift: "{", caps: "[", shiftCaps: "{" },
+      code: "BracketLeft",
     },
     {
-      ru: { default: "=", shift: `+`, caps: "=", shiftCaps: `+` },
-      eng: { default: "=", shift: "+", caps: "=", shiftCaps: "+" },
-      code: "Equal",
+      ru: { default: "ъ", shift: `Ъ`, caps: "Ъ", shiftCaps: `ъ` },
+      eng: { default: "]", shift: "}", caps: "]", shiftCaps: "}" },
+      code: "BracketRight",
+    },
+    {
+      ru: { default: `\\`, shift: `/`, caps: "\\", shiftCaps: `/` },
+      eng: { default: "\\", shift: "/", caps: "\\", shiftCaps: "/" },
+      code: "Backslash",
     },
     {
       ru: {
-        default: "Backspace",
-        shift: `Backspace`,
-        caps: "Backspace",
-        shiftCaps: `Backspace`,
+        default: "Del",
+        shift: `Del`,
+        caps: "Del",
+        shiftCaps: `Del`,
       },
       eng: {
-        default: "Backspace",
-        shift: "Backspace",
-        caps: "Backspace",
-        shiftCaps: "Backspace",
+        default: "Del",
+        shift: "Del",
+        caps: "Del",
+        shiftCaps: "Del",
       },
-      code: "Backspace",
+      code: "Delete",
     },
   ],
   [],
@@ -298,12 +303,19 @@ function createEngKeys(i, keys) {
 }
 
 // Check Shift Button
-
+// Current button
+let currentKey = document.querySelectorAll(".key");
 let defaultKeyses = document.querySelectorAll(".key_default");
 let shiftKeys = document.querySelectorAll(".key_shift");
 
 document.addEventListener("keydown", function (event) {
-  console.log(event.code);
+  currentKey.forEach((element) => {
+    if (element.className.includes(event.code)) {
+      element.classList.add("active");
+    }
+    console.log(event.repeat);
+  });
+
   if (event.code == "ShiftLeft") {
     shiftKeys.forEach((element) => {
       element.classList.toggle("hide");
@@ -315,7 +327,12 @@ document.addEventListener("keydown", function (event) {
 });
 
 document.addEventListener("keyup", function (event) {
-  console.log(event.code);
+  currentKey.forEach((element) => {
+    if (element.className.includes(event.code)) {
+      element.classList.remove("active");
+    }
+  });
+
   if (event.code == "ShiftLeft") {
     shiftKeys.forEach((element) => {
       element.classList.toggle("hide");
