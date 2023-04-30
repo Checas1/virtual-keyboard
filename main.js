@@ -35,7 +35,7 @@ const keysArray = [
   [
     {
       ru: { default: "ё", shift: "Ё", caps: "Ё", shiftCaps: "ё" },
-      eng: { default: "`", shift: "~", caps: "`", shiftCaps: "`" },
+      eng: { default: "`", shift: "~", caps: "`", shiftCaps: "~" },
       code: "Backquote",
     },
     {
@@ -527,14 +527,19 @@ function createEngKeys(i, keys) {
 let currentKey = document.querySelectorAll(".key");
 let defaultKeyses = document.querySelectorAll(".key_default");
 let shiftKeys = document.querySelectorAll(".key_shift");
-
+let capsKeys = document.querySelectorAll(".key_caps");
+let capsShiftKeys = document.querySelectorAll(".key_shiftCaps");
 let shiftRight = document.querySelector(".ShiftRight");
 let shiftLeft = document.querySelector(".ShiftLeft");
 
+let capsLock = document.querySelector(".CapsLock");
 // keyDown
 
 document.addEventListener("keydown", function (event) {
-  if (event.code == "ShiftLeft" || event.code == "ShiftRight") {
+  if (
+    (event.code == "ShiftLeft" && !capsLock.classList.contains("active")) ||
+    (event.code == "ShiftRight" && !capsLock.classList.contains("active"))
+  ) {
     shiftKeys.forEach((element) => {
       element.classList.toggle("hide");
     });
@@ -542,23 +547,64 @@ document.addEventListener("keydown", function (event) {
       element.classList.toggle("hide");
     });
   }
-});
-
-// textArea Active
-
-document.addEventListener("click", (event) => {
-  if (textArea.contains(event.target)) {
-    textArea.classList.add("active");
+  if (event.code == "CapsLock" && !capsLock.classList.contains("active")) {
+    shiftKeys.forEach((element) => {
+      element.classList.add("hide");
+    });
+    defaultKeyses.forEach((element) => {
+      element.classList.add("hide");
+    });
+    capsKeys.forEach((element) => {
+      element.classList.remove("hide");
+    });
+  }
+  if (event.code == "CapsLock" && capsLock.classList.contains("active")) {
+    defaultKeyses.forEach((element) => {
+      element.classList.toggle("hide");
+    });
+    capsKeys.forEach((element) => {
+      element.classList.add("hide");
+    });
+  }
+  if (
+    (shiftLeft.classList.contains("active") && event.code == "CapsLock") ||
+    (shiftRight.classList.contains("active") && event.code == "CapsLock")
+  ) {
+    shiftKeys.forEach((element) => {
+      element.classList.add("hide");
+    });
+    defaultKeyses.forEach((element) => {
+      element.classList.add("hide");
+    });
+    capsKeys.forEach((element) => {
+      element.classList.add("hide");
+    });
+    capsShiftKeys.forEach((element) => {
+      element.classList.remove("hide");
+    });
+  }
+  if (
+    (capsLock.classList.contains("active") && event.code == "ShiftLeft") ||
+    (capsLock.classList.contains("active") && event.code == "ShiftRight")
+  ) {
+    shiftKeys.forEach((element) => {
+      element.classList.add("hide");
+    });
+    defaultKeyses.forEach((element) => {
+      element.classList.add("hide");
+    });
+    capsKeys.forEach((element) => {
+      element.classList.add("hide");
+    });
+    capsShiftKeys.forEach((element) => {
+      element.classList.remove("hide");
+    });
   }
 });
 
-document.addEventListener("click", (event) => {
-  if (!textArea.contains(event.target)) {
-    textArea.classList.remove("active");
-  }
+textArea.addEventListener("keydown", function (event) {
+  event.preventDefault();
 });
-
-// add Shift active
 
 document.addEventListener("keydown", function (event) {
   let cursorStart = textArea.selectionStart;
@@ -568,14 +614,30 @@ document.addEventListener("keydown", function (event) {
 
       if (event.code === "Space") {
         event.preventDefault();
+        textArea.value =
+          textArea.value.slice(0, cursorStart) +
+          textArea.value.slice(cursorStart);
+        textArea.selectionStart = cursorStart + 1;
+        textArea.selectionEnd = textArea.selectionStart;
       }
       if (event.code === "Tab") {
         event.preventDefault();
-        textArea.value += "    ";
+        textArea.value =
+          textArea.value.slice(0, cursorStart) +
+          "    " +
+          textArea.value.slice(cursorStart);
+        textArea.selectionStart = cursorStart + 4;
+        textArea.selectionEnd = textArea.selectionStart;
       }
       if (event.code === "Enter") {
         event.preventDefault();
-        textArea.value += "\n";
+        textArea.value =
+          textArea.value.slice(0, cursorStart) +
+          "\n" +
+          textArea.value.slice(cursorStart);
+        let nextLinePosition = textArea.value.indexOf("\n", cursorStart) + 1;
+        textArea.selectionStart = nextLinePosition;
+        textArea.selectionEnd = textArea.selectionStart;
       }
       if (event.code === "Backspace") {
         event.preventDefault();
@@ -584,6 +646,16 @@ document.addEventListener("keydown", function (event) {
             textArea.value.slice(0, cursorStart - 1) +
             textArea.value.slice(cursorStart);
           textArea.selectionStart = cursorStart - 1;
+          textArea.selectionEnd = textArea.selectionStart;
+        }
+      }
+      if (event.code === "Delete") {
+        event.preventDefault();
+        if (textArea.selectionStart < textArea.value.length) {
+          textArea.value =
+            textArea.value.slice(0, cursorStart) +
+            textArea.value.slice(cursorStart + 1);
+          textArea.selectionStart = cursorStart;
           textArea.selectionEnd = textArea.selectionStart;
         }
       }
@@ -603,7 +675,7 @@ document.addEventListener("keydown", function (event) {
         event.code != "CapsLock" &&
         event.code != "ControlLeft" &&
         event.code != "ControlRight" &&
-        event.code != "Del" &&
+        event.code != "Delete" &&
         event.code != "AltLeft" &&
         event.code != "AltRight" &&
         event.code != "MetaLeft" &&
@@ -611,7 +683,8 @@ document.addEventListener("keydown", function (event) {
       ) {
         if (
           !shiftLeft.classList.contains("active") &&
-          !shiftRight.classList.contains("active")
+          !shiftRight.classList.contains("active") &&
+          !capsLock.classList.contains("active")
         ) {
           const child = element.querySelector(".key_default");
           textArea.value =
@@ -622,10 +695,39 @@ document.addEventListener("keydown", function (event) {
           textArea.selectionEnd = textArea.selectionStart;
         }
         if (
-          shiftLeft.classList.contains("active") ||
-          shiftRight.classList.contains("active")
+          (!capsLock.classList.contains("active") &&
+            shiftLeft.classList.contains("active")) ||
+          (shiftRight.classList.contains("active") &&
+            !capsLock.classList.contains("active"))
         ) {
           const child = element.querySelector(".key_shift");
+          textArea.value =
+            textArea.value.slice(0, cursorStart) +
+            child.textContent +
+            textArea.value.slice(cursorStart);
+          textArea.selectionStart = cursorStart + 1;
+          textArea.selectionEnd = textArea.selectionStart;
+        }
+        if (
+          capsLock.classList.contains("active") &&
+          !shiftLeft.classList.contains("active") &&
+          !shiftRight.classList.contains("active")
+        ) {
+          const child = element.querySelector(".key_caps");
+          textArea.value =
+            textArea.value.slice(0, cursorStart) +
+            child.textContent +
+            textArea.value.slice(cursorStart);
+          textArea.selectionStart = cursorStart + 1;
+          textArea.selectionEnd = textArea.selectionStart;
+        }
+        if (
+          (capsLock.classList.contains("active") &&
+            shiftLeft.classList.contains("active")) ||
+          (shiftRight.classList.contains("active") &&
+            capsLock.classList.contains("active"))
+        ) {
+          const child = element.querySelector(".key_shiftCaps");
           textArea.value =
             textArea.value.slice(0, cursorStart) +
             child.textContent +
@@ -648,11 +750,64 @@ document.addEventListener("keyup", function (event) {
   });
 
   if (event.code == "ShiftLeft" || event.code == "ShiftRight") {
+    console.log("shift");
     shiftKeys.forEach((element) => {
-      element.classList.toggle("hide");
+      element.classList.add("hide");
     });
     defaultKeyses.forEach((element) => {
-      element.classList.toggle("hide");
+      element.classList.remove("hide");
+    });
+  }
+  if (
+    event.code == "CapsLock" &&
+    !shiftLeft.classList.contains("active") &&
+    !shiftRight.classList.contains("active")
+  ) {
+    console.log("если капс клик и шифт выкл");
+    shiftKeys.forEach((element) => {
+      element.classList.add("hide");
+    });
+    defaultKeyses.forEach((element) => {
+      element.classList.remove("hide");
+    });
+    capsKeys.forEach((element) => {
+      element.classList.add("hide");
+    });
+  }
+  if (
+    (event.code == "CapsLock" && shiftLeft.classList.contains("active")) ||
+    (event.code == "CapsLock" && shiftRight.classList.contains("active"))
+  ) {
+    console.log("если клик капс и шифт вкл");
+    defaultKeyses.forEach((element) => {
+      element.classList.add("hide");
+    });
+    capsKeys.forEach((element) => {
+      element.classList.add("hide");
+    });
+    shiftKeys.forEach((element) => {
+      element.classList.remove("hide");
+    });
+    capsShiftKeys.forEach((element) => {
+      element.classList.add("hide");
+    });
+  }
+
+  if (
+    (capsLock.classList.contains("active") && event.code == "ShiftLeft") ||
+    (capsLock.classList.contains("active") && event.code == "ShiftRight")
+  ) {
+    shiftKeys.forEach((element) => {
+      element.classList.add("hide");
+    });
+    defaultKeyses.forEach((element) => {
+      element.classList.add("hide");
+    });
+    capsKeys.forEach((element) => {
+      element.classList.remove("hide");
+    });
+    capsShiftKeys.forEach((element) => {
+      element.classList.add("hide");
     });
   }
 });
@@ -664,25 +819,117 @@ currentKey.forEach((element) => {
     let cursorStart = textArea.selectionStart;
     this.classList.add("active");
 
+    if (
+      (this.classList.contains("ShiftLeft") &&
+        !capsLock.classList.contains("active")) ||
+      (this.classList.contains("ShiftRight") &&
+        !capsLock.classList.contains("active"))
+    ) {
+      shiftKeys.forEach((element) => {
+        element.classList.remove("hide");
+      });
+      defaultKeyses.forEach((element) => {
+        element.classList.add("hide");
+      });
+    }
+
+    if (this.classList.contains("CapsLock")) {
+      shiftKeys.forEach((element) => {
+        element.classList.add("hide");
+      });
+      defaultKeyses.forEach((element) => {
+        element.classList.add("hide");
+      });
+      capsKeys.forEach((element) => {
+        element.classList.remove("hide");
+      });
+    }
+
+    if (
+      (this.classList.contains("CapsLock") &&
+        shiftRight.classList.contains("active")) ||
+      (this.classList.contains("CapsLock") &&
+        shiftLeft.classList.contains("active"))
+    ) {
+      shiftKeys.forEach((element) => {
+        element.classList.add("hide");
+      });
+      defaultKeyses.forEach((element) => {
+        element.classList.add("hide");
+      });
+      capsKeys.forEach((element) => {
+        element.classList.add("hide");
+      });
+      capsShiftKeys.forEach((element) => {
+        element.classList.remove("hide");
+      });
+    }
+
+    if (
+      (this.classList.contains("ShiftLeft") &&
+        capsLock.classList.contains("active")) ||
+      (this.classList.contains("ShiftRight") &&
+        capsLock.classList.contains("active"))
+    ) {
+      shiftKeys.forEach((element) => {
+        element.classList.add("hide");
+      });
+      defaultKeyses.forEach((element) => {
+        element.classList.add("hide");
+      });
+      capsKeys.forEach((element) => {
+        element.classList.add("hide");
+      });
+      capsShiftKeys.forEach((element) => {
+        element.classList.remove("hide");
+      });
+    }
+
     if (this.classList.contains("Space")) {
       event.preventDefault();
+      textArea.value =
+        textArea.value.slice(0, cursorStart) +
+        textArea.value.slice(cursorStart);
+      textArea.selectionStart = cursorStart + 1;
+      textArea.selectionEnd = textArea.selectionStart;
     }
     if (this.classList.contains("Tab")) {
       event.preventDefault();
-      textArea.value += "    ";
+      textArea.value =
+        textArea.value.slice(0, cursorStart) +
+        "    " +
+        textArea.value.slice(cursorStart);
+      textArea.selectionStart = cursorStart + 4;
+      textArea.selectionEnd = textArea.selectionStart;
     }
     if (this.classList.contains("Enter")) {
       event.preventDefault();
-      textArea.value += "\n";
+      textArea.value =
+        textArea.value.slice(0, cursorStart) +
+        "\n" +
+        textArea.value.slice(cursorStart);
+      let nextLinePosition = textArea.value.indexOf("\n", cursorStart) + 1;
+      textArea.selectionStart = nextLinePosition;
+      textArea.selectionEnd = textArea.selectionStart;
     }
     if (this.classList.contains("Backspace")) {
       event.preventDefault();
-      // textArea.value = textArea.value.slice(0, -1);
       if (textArea.selectionStart > 0) {
         textArea.value =
           textArea.value.slice(0, cursorStart - 1) +
           textArea.value.slice(cursorStart);
         textArea.selectionStart = cursorStart - 1;
+        textArea.selectionEnd = textArea.selectionStart;
+      }
+    }
+
+    if (this.classList.contains("Delete")) {
+      event.preventDefault();
+      if (textArea.selectionStart < textArea.value.length) {
+        textArea.value =
+          textArea.value.slice(0, cursorStart) +
+          textArea.value.slice(cursorStart + 1);
+        textArea.selectionStart = cursorStart;
         textArea.selectionEnd = textArea.selectionStart;
       }
     }
@@ -694,7 +941,7 @@ currentKey.forEach((element) => {
       !this.classList.contains("CapsLock") &&
       !this.classList.contains("ControlLeft") &&
       !this.classList.contains("ControlRight") &&
-      !this.classList.contains("Del") &&
+      !this.classList.contains("Delete") &&
       !this.classList.contains("AltLeft") &&
       !this.classList.contains("AltRight") &&
       !this.classList.contains("MetaLeft") &&
@@ -702,7 +949,8 @@ currentKey.forEach((element) => {
     ) {
       if (
         !shiftLeft.classList.contains("active") &&
-        !shiftRight.classList.contains("active")
+        !shiftRight.classList.contains("active") &&
+        !capsLock.classList.contains("active")
       ) {
         const child = element.querySelector(".key_default");
         textArea.value =
@@ -713,10 +961,39 @@ currentKey.forEach((element) => {
         textArea.selectionEnd = textArea.selectionStart;
       }
       if (
-        shiftLeft.classList.contains("active") ||
-        shiftRight.classList.contains("active")
+        (!capsLock.classList.contains("active") &&
+          shiftLeft.classList.contains("active")) ||
+        (!capsLock.classList.contains("active") &&
+          shiftRight.classList.contains("active"))
       ) {
         const child = element.querySelector(".key_shift");
+        textArea.value =
+          textArea.value.slice(0, cursorStart) +
+          child.textContent +
+          textArea.value.slice(cursorStart);
+        textArea.selectionStart = cursorStart + 1;
+        textArea.selectionEnd = textArea.selectionStart;
+      }
+      if (
+        capsLock.classList.contains("active") &&
+        !shiftLeft.classList.contains("active") &&
+        !shiftRight.classList.contains("active")
+      ) {
+        const child = element.querySelector(".key_caps");
+        textArea.value =
+          textArea.value.slice(0, cursorStart) +
+          child.textContent +
+          textArea.value.slice(cursorStart);
+        textArea.selectionStart = cursorStart + 1;
+        textArea.selectionEnd = textArea.selectionStart;
+      }
+      if (
+        (capsLock.classList.contains("active") &&
+          shiftLeft.classList.contains("active")) ||
+        (capsLock.classList.contains("active") &&
+          shiftRight.classList.contains("active"))
+      ) {
+        const child = element.querySelector(".key_shiftCaps");
         textArea.value =
           textArea.value.slice(0, cursorStart) +
           child.textContent +
@@ -731,9 +1008,66 @@ currentKey.forEach((element) => {
 currentKey.forEach((element) => {
   element.addEventListener("mouseup", function () {
     this.classList.remove("active");
-  });
-});
+    if (
+      this.classList.contains("ShiftLeft") ||
+      this.classList.contains("ShiftRight")
+    ) {
+      shiftKeys.forEach((element) => {
+        element.classList.toggle("hide");
+      });
+      defaultKeyses.forEach((element) => {
+        element.classList.toggle("hide");
+      });
+    }
 
-textArea.addEventListener("keydown", function (event) {
-  event.preventDefault();
+    if (
+      (this.classList.contains("ShiftLeft") &&
+        capsLock.classList.contains("active")) ||
+      (this.classList.contains("ShiftRight") &&
+        capsLock.classList.contains("active"))
+    ) {
+      shiftKeys.forEach((element) => {
+        element.classList.remove("hide");
+      });
+      defaultKeyses.forEach((element) => {
+        element.classList.add("hide");
+      });
+      capsKeys.forEach((element) => {
+        element.classList.add("hide");
+      });
+      capsShiftKeys.forEach((element) => {
+        element.classList.add("hide");
+      });
+    }
+    if (this.classList.contains("CapsLock")) {
+      shiftKeys.forEach((element) => {
+        element.classList.add("hide");
+      });
+      defaultKeyses.forEach((element) => {
+        element.classList.toggle("hide");
+      });
+      capsKeys.forEach((element) => {
+        element.classList.add("hide");
+      });
+    }
+    if (
+      (this.classList.contains("CapsLock") &&
+        shiftRight.classList.contains("active")) ||
+      (this.classList.contains("CapsLock") &&
+        shiftLeft.classList.contains("active"))
+    ) {
+      shiftKeys.forEach((element) => {
+        element.classList.remove("hide");
+      });
+      defaultKeyses.forEach((element) => {
+        element.classList.add("hide");
+      });
+      capsKeys.forEach((element) => {
+        element.classList.add("hide");
+      });
+      capsShiftKeys.forEach((element) => {
+        element.classList.add("hide");
+      });
+    }
+  });
 });
