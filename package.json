@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/Checas1/virtual-keyboard/issues"
   },
-  "homepage": "https://github.com/Checas1/virtual-keyboard#readme"
+  "homepage": "https://github.com/Checas1/virtual-keyboard#readme",
+  "devDependencies": {
+    "eslint": "^8.39.0"
+  }
 }

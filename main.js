@@ -5,6 +5,7 @@ let main = document.createElement("main");
 let container = document.createElement("div");
 let headline = document.createElement("h1");
 let textArea = document.createElement("textarea");
+
 main.classList.add("main");
 body.prepend(main);
 
@@ -200,9 +201,227 @@ const keysArray = [
       code: "Delete",
     },
   ],
-  [],
-  [],
-  [],
+  [
+    {
+      ru: {
+        default: "CapsLock",
+        shift: "CapsLock",
+        caps: "CapsLock",
+        shiftCaps: "CapsLock",
+      },
+      eng: {
+        default: "CapsLock",
+        shift: "CapsLock",
+        caps: "CapsLock",
+        shiftCaps: "CapsLock",
+      },
+      code: "CapsLock",
+    },
+    {
+      ru: { default: "ф", shift: "Ф", caps: "Ф", shiftCaps: "ф" },
+      eng: { default: "a", shift: "A", caps: "A", shiftCaps: "a" },
+      code: "KeyA",
+    },
+    {
+      ru: { default: "ы", shift: `Ы`, caps: "Ы", shiftCaps: `ы` },
+      eng: { default: "s", shift: "S", caps: "S", shiftCaps: "s" },
+      code: "KeyS",
+    },
+    {
+      ru: { default: "в", shift: `В`, caps: "В", shiftCaps: `в` },
+      eng: { default: "d", shift: "D", caps: "D", shiftCaps: "d" },
+      code: "KeyD",
+    },
+    {
+      ru: { default: "а", shift: `А`, caps: "А", shiftCaps: `а` },
+      eng: { default: "f", shift: "F", caps: "F", shiftCaps: "f" },
+      code: "KeyF",
+    },
+    {
+      ru: { default: "п", shift: `П`, caps: "П", shiftCaps: `п` },
+      eng: { default: "g", shift: "G", caps: "G", shiftCaps: "g" },
+      code: "KeyG",
+    },
+    {
+      ru: { default: "р", shift: `Р`, caps: "Р", shiftCaps: `р` },
+      eng: { default: "h", shift: "H", caps: "H", shiftCaps: "h" },
+      code: "KeyH",
+    },
+    {
+      ru: { default: "о", shift: `О`, caps: "О", shiftCaps: `о` },
+      eng: { default: "j", shift: "J", caps: "J", shiftCaps: "j" },
+      code: "KeyJ",
+    },
+    {
+      ru: { default: "л", shift: `Л`, caps: "Л", shiftCaps: `л` },
+      eng: { default: "k", shift: "K", caps: "K", shiftCaps: "k" },
+      code: "KeyK",
+    },
+    {
+      ru: { default: "д", shift: `Д`, caps: "Д", shiftCaps: `д` },
+      eng: { default: "l", shift: "L", caps: "L", shiftCaps: "l" },
+      code: "KeyL",
+    },
+    {
+      ru: { default: "ж", shift: `Ж`, caps: "Ж", shiftCaps: `ж` },
+      eng: { default: ";", shift: ":", caps: ";", shiftCaps: ":" },
+      code: "Semicolon",
+    },
+    {
+      ru: { default: "э", shift: `Э`, caps: "Э", shiftCaps: `э` },
+      eng: { default: "'", shift: `"`, caps: "'", shiftCaps: `"` },
+      code: "Quote",
+    },
+    {
+      ru: {
+        default: "Enter",
+        shift: `Enter`,
+        caps: "Enter",
+        shiftCaps: `Enter`,
+      },
+      eng: {
+        default: "Enter",
+        shift: "Enter",
+        caps: "Enter",
+        shiftCaps: "Enter",
+      },
+      code: "Enter",
+    },
+  ],
+  [
+    {
+      ru: {
+        default: "Shift",
+        shift: "Shift",
+        caps: "Shift",
+        shiftCaps: "Shift",
+      },
+      eng: {
+        default: "Shift",
+        shift: "Shift",
+        caps: "Shift",
+        shiftCaps: "Shift",
+      },
+      code: "ShiftLeft",
+    },
+    {
+      ru: { default: "я", shift: "Я", caps: "Я", shiftCaps: "я" },
+      eng: { default: "z", shift: "Z", caps: "Z", shiftCaps: "z" },
+      code: "KeyZ",
+    },
+    {
+      ru: { default: "ч", shift: `Ч`, caps: "Ч", shiftCaps: `ч` },
+      eng: { default: "x", shift: "X", caps: "X", shiftCaps: "x" },
+      code: "KeyX",
+    },
+    {
+      ru: { default: "с", shift: `С`, caps: "С", shiftCaps: `с` },
+      eng: { default: "c", shift: "C", caps: "C", shiftCaps: "c" },
+      code: "KeyC",
+    },
+    {
+      ru: { default: "м", shift: `М`, caps: "М", shiftCaps: `м` },
+      eng: { default: "v", shift: "V", caps: "V", shiftCaps: "v" },
+      code: "KeyV",
+    },
+    {
+      ru: { default: "и", shift: `И`, caps: "И", shiftCaps: `и` },
+      eng: { default: "b", shift: "B", caps: "B", shiftCaps: "b" },
+      code: "KeyB",
+    },
+    {
+      ru: { default: "т", shift: `Т`, caps: "Т", shiftCaps: `т` },
+      eng: { default: "n", shift: "N", caps: "N", shiftCaps: "n" },
+      code: "KeyN",
+    },
+    {
+      ru: { default: "ь", shift: `Ь`, caps: "Ь", shiftCaps: `ь` },
+      eng: { default: "m", shift: "M", caps: "M", shiftCaps: "m" },
+      code: "KeyM",
+    },
+    {
+      ru: { default: "б", shift: `Б`, caps: "Б", shiftCaps: `б` },
+      eng: { default: ",", shift: "<", caps: ",", shiftCaps: "<" },
+      code: "Comma",
+    },
+    {
+      ru: { default: "ю", shift: `Ю`, caps: "Ю", shiftCaps: `ю` },
+      eng: { default: ".", shift: ">", caps: ".", shiftCaps: ">" },
+      code: "Period",
+    },
+    {
+      ru: { default: ".", shift: `,`, caps: ".", shiftCaps: `,` },
+      eng: { default: "/", shift: "?", caps: "/", shiftCaps: "?" },
+      code: "Slash",
+    },
+    {
+      ru: { default: "↑", shift: `↑`, caps: "↑", shiftCaps: `↑` },
+      eng: { default: "↑", shift: `↑`, caps: "↑", shiftCaps: `↑` },
+      code: "ArrowUp",
+    },
+    {
+      ru: {
+        default: "Shift",
+        shift: `Shift`,
+        caps: "Shift",
+        shiftCaps: `Shift`,
+      },
+      eng: {
+        default: "Shift",
+        shift: "Shift",
+        caps: "Shift",
+        shiftCaps: "Shift",
+      },
+      code: "ShiftRight",
+    },
+  ],
+  [
+    {
+      ru: { default: "Ctrl", shift: "Ctrl", caps: "Ctrl", shiftCaps: "Ctrl" },
+      eng: { default: "Ctrl", shift: "Ctrl", caps: "Ctrl", shiftCaps: "Ctrl" },
+      code: "ControlLeft",
+    },
+    {
+      ru: { default: "Win", shift: `Win`, caps: "Win", shiftCaps: `Win` },
+      eng: { default: "Win", shift: "Win", caps: "Win", shiftCaps: "Win" },
+      code: "MetaLeft",
+    },
+    {
+      ru: { default: "Alt", shift: `Alt`, caps: "Alt", shiftCaps: `Alt` },
+      eng: { default: "Alt", shift: "Alt", caps: "Alt", shiftCaps: "Alt" },
+      code: "AltLeft",
+    },
+    {
+      ru: { default: " ", shift: ` `, caps: " ", shiftCaps: ` ` },
+      eng: { default: " ", shift: " ", caps: " ", shiftCaps: " " },
+      code: "Space",
+    },
+    {
+      ru: { default: "Alt", shift: `Alt`, caps: "Alt", shiftCaps: `Alt` },
+      eng: { default: "Alt", shift: "Alt", caps: "Alt", shiftCaps: "Alt" },
+      code: "AltRight",
+    },
+    {
+      ru: { default: "←", shift: `←`, caps: "←", shiftCaps: `←` },
+      eng: { default: "←", shift: "←", caps: "←", shiftCaps: "←" },
+      code: "ArrowLeft",
+    },
+    {
+      ru: { default: "↓", shift: `↓`, caps: "↓", shiftCaps: `↓` },
+      eng: { default: "↓", shift: "↓", caps: "↓", shiftCaps: "↓" },
+      code: "ArrowDown",
+    },
+    {
+      ru: { default: "→", shift: `→`, caps: "→", shiftCaps: `→` },
+      eng: { default: "→", shift: "→", caps: "→", shiftCaps: "→" },
+      code: "ArrowRight",
+    },
+    {
+      ru: { default: "Ctrl", shift: `Ctrl`, caps: "Ctrl", shiftCaps: `Ctrl` },
+      eng: { default: "Ctrl", shift: "Ctrl", caps: "Ctrl", shiftCaps: "Ctrl" },
+      code: "ControlRight",
+    },
+  ],
 ];
 
 // Keys
@@ -225,7 +444,7 @@ for (let i = 0; i < keysArray.length; i++) {
     key.classList.add("key");
     key.classList.add(keysArray[i][keys].code);
     keysLine.appendChild(key);
-
+    console.log(keysArray[i][keys]);
     if (keysArray[i][keys].eng) {
       key_lenguage = document.createElement("div");
       key_lenguage.classList.add("eng");
@@ -236,7 +455,7 @@ for (let i = 0; i < keysArray.length; i++) {
       key_lenguage = document.createElement("div");
       key_lenguage.classList.add("ru");
       key.appendChild(key_lenguage);
-      createRusKeys(i, keys);
+      // createRusKeys(i, keys);
     }
   }
 }
@@ -245,6 +464,7 @@ for (let i = 0; i < keysArray.length; i++) {
 
 function createRusKeys(i, keys) {
   if (keysArray[i][keys].ru.default) {
+    console.log(keysArray[i][keys].ru.default);
     keyDefault = document.createElement("div");
     keyDefault.classList.add("key_default");
     key_lenguage.appendChild(keyDefault);
@@ -308,15 +528,13 @@ let currentKey = document.querySelectorAll(".key");
 let defaultKeyses = document.querySelectorAll(".key_default");
 let shiftKeys = document.querySelectorAll(".key_shift");
 
-document.addEventListener("keydown", function (event) {
-  currentKey.forEach((element) => {
-    if (element.className.includes(event.code)) {
-      element.classList.add("active");
-    }
-    console.log(event.repeat);
-  });
+let shiftRight = document.querySelector(".ShiftRight");
+let shiftLeft = document.querySelector(".ShiftLeft");
 
-  if (event.code == "ShiftLeft") {
+// keyDown
+
+document.addEventListener("keydown", function (event) {
+  if (event.code == "ShiftLeft" || event.code == "ShiftRight") {
     shiftKeys.forEach((element) => {
       element.classList.toggle("hide");
     });
@@ -326,6 +544,102 @@ document.addEventListener("keydown", function (event) {
   }
 });
 
+// textArea Active
+
+document.addEventListener("click", (event) => {
+  if (textArea.contains(event.target)) {
+    textArea.classList.add("active");
+  }
+});
+
+document.addEventListener("click", (event) => {
+  if (!textArea.contains(event.target)) {
+    textArea.classList.remove("active");
+  }
+});
+
+// add Shift active
+
+document.addEventListener("keydown", function (event) {
+  let cursorStart = textArea.selectionStart;
+  currentKey.forEach((element) => {
+    if (element.className.includes(event.code)) {
+      element.classList.add("active");
+
+      if (event.code === "Space") {
+        event.preventDefault();
+      }
+      if (event.code === "Tab") {
+        event.preventDefault();
+        textArea.value += "    ";
+      }
+      if (event.code === "Enter") {
+        event.preventDefault();
+        textArea.value += "\n";
+      }
+      if (event.code === "Backspace") {
+        event.preventDefault();
+        if (textArea.selectionStart > 0) {
+          textArea.value =
+            textArea.value.slice(0, cursorStart - 1) +
+            textArea.value.slice(cursorStart);
+          textArea.selectionStart = cursorStart - 1;
+          textArea.selectionEnd = textArea.selectionStart;
+        }
+      }
+      if (
+        event.code === "ArrowUp" ||
+        event.code === "ArrowDown" ||
+        event.code === "ArrowLeft" ||
+        event.code === "ArrowRight"
+      ) {
+        event.preventDefault();
+      }
+      if (
+        event.code != "ShiftLeft" &&
+        event.code != "ShiftRight" &&
+        event.code != "Tab" &&
+        event.code != "Backspace" &&
+        event.code != "CapsLock" &&
+        event.code != "ControlLeft" &&
+        event.code != "ControlRight" &&
+        event.code != "Del" &&
+        event.code != "AltLeft" &&
+        event.code != "AltRight" &&
+        event.code != "MetaLeft" &&
+        event.code != "Enter"
+      ) {
+        if (
+          !shiftLeft.classList.contains("active") &&
+          !shiftRight.classList.contains("active")
+        ) {
+          const child = element.querySelector(".key_default");
+          textArea.value =
+            textArea.value.slice(0, cursorStart) +
+            child.textContent +
+            textArea.value.slice(cursorStart);
+          textArea.selectionStart = cursorStart + 1;
+          textArea.selectionEnd = textArea.selectionStart;
+        }
+        if (
+          shiftLeft.classList.contains("active") ||
+          shiftRight.classList.contains("active")
+        ) {
+          const child = element.querySelector(".key_shift");
+          textArea.value =
+            textArea.value.slice(0, cursorStart) +
+            child.textContent +
+            textArea.value.slice(cursorStart);
+          textArea.selectionStart = cursorStart + 1;
+          textArea.selectionEnd = textArea.selectionStart;
+        }
+      }
+    }
+  });
+});
+
+// keyUp
+
 document.addEventListener("keyup", function (event) {
   currentKey.forEach((element) => {
     if (element.className.includes(event.code)) {
@@ -333,7 +647,7 @@ document.addEventListener("keyup", function (event) {
     }
   });
 
-  if (event.code == "ShiftLeft") {
+  if (event.code == "ShiftLeft" || event.code == "ShiftRight") {
     shiftKeys.forEach((element) => {
       element.classList.toggle("hide");
     });
@@ -341,4 +655,85 @@ document.addEventListener("keyup", function (event) {
       element.classList.toggle("hide");
     });
   }
+});
+
+// click
+
+currentKey.forEach((element) => {
+  element.addEventListener("mousedown", function (event) {
+    let cursorStart = textArea.selectionStart;
+    this.classList.add("active");
+
+    if (this.classList.contains("Space")) {
+      event.preventDefault();
+    }
+    if (this.classList.contains("Tab")) {
+      event.preventDefault();
+      textArea.value += "    ";
+    }
+    if (this.classList.contains("Enter")) {
+      event.preventDefault();
+      textArea.value += "\n";
+    }
+    if (this.classList.contains("Backspace")) {
+      event.preventDefault();
+      // textArea.value = textArea.value.slice(0, -1);
+      if (textArea.selectionStart > 0) {
+        textArea.value =
+          textArea.value.slice(0, cursorStart - 1) +
+          textArea.value.slice(cursorStart);
+        textArea.selectionStart = cursorStart - 1;
+        textArea.selectionEnd = textArea.selectionStart;
+      }
+    }
+    if (
+      !this.classList.contains("ShiftLeft") &&
+      !this.classList.contains("ShiftRight") &&
+      !this.classList.contains("Tab") &&
+      !this.classList.contains("Backspace") &&
+      !this.classList.contains("CapsLock") &&
+      !this.classList.contains("ControlLeft") &&
+      !this.classList.contains("ControlRight") &&
+      !this.classList.contains("Del") &&
+      !this.classList.contains("AltLeft") &&
+      !this.classList.contains("AltRight") &&
+      !this.classList.contains("MetaLeft") &&
+      !this.classList.contains("Enter")
+    ) {
+      if (
+        !shiftLeft.classList.contains("active") &&
+        !shiftRight.classList.contains("active")
+      ) {
+        const child = element.querySelector(".key_default");
+        textArea.value =
+          textArea.value.slice(0, cursorStart) +
+          child.textContent +
+          textArea.value.slice(cursorStart);
+        textArea.selectionStart = cursorStart + 1;
+        textArea.selectionEnd = textArea.selectionStart;
+      }
+      if (
+        shiftLeft.classList.contains("active") ||
+        shiftRight.classList.contains("active")
+      ) {
+        const child = element.querySelector(".key_shift");
+        textArea.value =
+          textArea.value.slice(0, cursorStart) +
+          child.textContent +
+          textArea.value.slice(cursorStart);
+        textArea.selectionStart = cursorStart + 1;
+        textArea.selectionEnd = textArea.selectionStart;
+      }
+    }
+  });
+});
+
+currentKey.forEach((element) => {
+  element.addEventListener("mouseup", function () {
+    this.classList.remove("active");
+  });
+});
+
+textArea.addEventListener("keydown", function (event) {
+  event.preventDefault();
 });
