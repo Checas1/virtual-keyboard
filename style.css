@@ -22,14 +22,14 @@
   height: 200px;
   border: 1px solid #7ab4ad;
   box-shadow: 13px 9px 32px -15px rgba(36, 126, 138, 1);
-  background-color: aliceblue;
+  background-color: rgb(132, 241, 214);
   resize: vertical;
 }
 
 .main__keyboard {
   width: 850px;
   height: 350px;
-  margin: 50px auto;
+  margin: 60px auto 30px;
   /* padding: 20px; */
   background-image:
     linear-gradient(#00ffe5 20%, transparent 20%, transparent calc(350px - 20%), #00ffe5 calc(350px - 20%)),
@@ -154,4 +154,20 @@
   border: 2px solid #00ffff;
   border-radius: 20px;
   color: #f58003;
+}
+
+.os {
+  text-align: center;
+  font-size: 18px;
+  color: #00ffe5;
+  text-shadow: 3px 0px 7px rgb(137, 243, 241), -3px 0px 7px rgb(47, 180, 187);
+  margin: 25px 0;
+}
+
+.change-lenguage {
+  text-align: center;
+  font-size: 18px;
+  color: #00ffe5;
+  text-shadow: 3px 0px 7px rgb(111, 250, 255), -3px 0px 7px rgb(47, 180, 187);
+  margin: 35px 0 50px;
 }
