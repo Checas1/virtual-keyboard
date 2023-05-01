@@ -9,6 +9,7 @@ let headline = document.createElement("h1");
 let textArea = document.createElement("textarea");
 let description = document.createElement("div");
 let changeLenguage = document.createElement("div");
+
 main.classList.add("main");
 body.prepend(main);
 
@@ -71,7 +72,7 @@ let currentLenguage = "eng";
 let index = 0;
 
 window.addEventListener("load", function () {
-  currentLenguage = localStorage.getItem("lenguage");
+  currentLenguage = sessionStorage.getItem("language");
   createElems();
 
   if (currentLenguage == "eng") {
@@ -269,6 +270,12 @@ textArea.addEventListener("keydown", function (event) {
   event.preventDefault();
 });
 
+let setSession = () => {
+  sessionStorage.setItem("language", "ru");
+  console.log(sessionStorage);
+};
+
+setSession();
 document.addEventListener("keydown", function (event) {
   let cursorStart = textArea.selectionStart;
   currentKey.forEach((element) => {
@@ -279,7 +286,7 @@ document.addEventListener("keydown", function (event) {
         leftAlt.classList.contains("active")
       ) {
         if (currentLenguage == "eng") {
-          localStorage.setItem("lenguage", "ru");
+          setSession();
           currentLenguage = "ru";
           index = 1;
           englishLenguage.forEach((elem) => {
@@ -289,7 +296,7 @@ document.addEventListener("keydown", function (event) {
             elem.classList.remove("hide");
           });
         } else if (currentLenguage == "ru") {
-          localStorage.setItem("lenguage", "eng");
+          setSession();
           currentLenguage = "eng";
           index = 0;
           russianLenguage.forEach((elem) => {
