@@ -200,6 +200,7 @@ function createEngKeys(i, keys) {
 // Current button
 
 document.addEventListener("keydown", function (event) {
+  if (event.repeat) return;
   if (
     (event.code == "ShiftLeft" && !capsLock.classList.contains("active")) ||
     (event.code == "ShiftRight" && !capsLock.classList.contains("active"))
@@ -280,6 +281,7 @@ document.addEventListener("keydown", function (event) {
   currentKey.forEach((element) => {
     if (element.className.includes(event.code)) {
       element.classList.add("active");
+      console.log(event);
       if (
         leftCtrl.classList.contains("active") &&
         leftAlt.classList.contains("active")
