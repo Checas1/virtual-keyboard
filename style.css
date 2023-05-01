@@ -1,5 +1,5 @@
 .body {
-  background-image: url('./2393037.webp');
+  background-image: url('./img/2393037.webp');
 }
 
 .container {
@@ -20,6 +20,7 @@
   display: block;
   margin: 0 auto;
   height: 200px;
+  font-size: 19px;
   border: 1px solid #7ab4ad;
   box-shadow: 13px 9px 32px -15px rgba(36, 126, 138, 1);
   background-color: rgb(132, 241, 214);
@@ -159,7 +160,7 @@
 .os {
   text-align: center;
   font-size: 18px;
-  color: #00ffe5;
+  color: #e5ecec;
   text-shadow: 3px 0px 7px rgb(137, 243, 241), -3px 0px 7px rgb(47, 180, 187);
   margin: 25px 0;
 }
@@ -167,7 +168,7 @@
 .change-lenguage {
   text-align: center;
   font-size: 18px;
-  color: #00ffe5;
+  color: #e5ecec;
   text-shadow: 3px 0px 7px rgb(111, 250, 255), -3px 0px 7px rgb(47, 180, 187);
   margin: 35px 0 50px;
 }
