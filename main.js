@@ -9,6 +9,7 @@ let headline = document.createElement("h1");
 let textArea = document.createElement("textarea");
 let description = document.createElement("div");
 let changeLenguage = document.createElement("div");
+
 main.classList.add("main");
 body.prepend(main);
 
@@ -71,7 +72,7 @@ let currentLenguage = "eng";
 let index = 0;
 
 window.addEventListener("load", function () {
-  currentLenguage = localStorage.getItem("lenguage");
+  currentLenguage = sessionStorage.getItem("language") || "eng";
   createElems();
 
   if (currentLenguage == "eng") {
@@ -199,6 +200,7 @@ function createEngKeys(i, keys) {
 // Current button
 
 document.addEventListener("keydown", function (event) {
+  if (event.repeat) return;
   if (
     (event.code == "ShiftLeft" && !capsLock.classList.contains("active")) ||
     (event.code == "ShiftRight" && !capsLock.classList.contains("active"))
@@ -269,17 +271,23 @@ textArea.addEventListener("keydown", function (event) {
   event.preventDefault();
 });
 
+let setSession = (language) => {
+  sessionStorage.setItem("language", language);
+  console.log(sessionStorage);
+};
+
 document.addEventListener("keydown", function (event) {
   let cursorStart = textArea.selectionStart;
   currentKey.forEach((element) => {
     if (element.className.includes(event.code)) {
       element.classList.add("active");
+      console.log(event);
       if (
         leftCtrl.classList.contains("active") &&
         leftAlt.classList.contains("active")
       ) {
         if (currentLenguage == "eng") {
-          localStorage.setItem("lenguage", "ru");
+          setSession("ru");
           currentLenguage = "ru";
           index = 1;
           englishLenguage.forEach((elem) => {
@@ -289,7 +297,7 @@ document.addEventListener("keydown", function (event) {
             elem.classList.remove("hide");
           });
         } else if (currentLenguage == "ru") {
-          localStorage.setItem("lenguage", "eng");
+          setSession("eng");
           currentLenguage = "eng";
           index = 0;
           russianLenguage.forEach((elem) => {
